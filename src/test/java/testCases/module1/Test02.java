@@ -18,7 +18,7 @@ public class Test02 extends TestBase {
 	{
 
 		log.info("Execution of testCase: testcase2 has started");
-		UIOperations uiOperations = new UIOperations(driver,"testcase2",testData,prop);
+		UIOperations uiOperations = new UIOperations(driver,"testcase2",testData);
 		uiOperations.perform();
 	}
 	
