@@ -25,19 +25,10 @@ public class Test05 extends TestBase {
 	public void testcase5(Map<String,String> testData)
 	{
 		log.info("Execution of testCase: testcase5 has started");
-		UIOperations uiOperations = new UIOperations(driver,"testcase5",testData,prop);
+		UIOperations uiOperations = new UIOperations(driver,"testcase5",testData);
 		uiOperations.perform();
 			
 	}
 	
-	@DataProvider(name="provideData2")
-	public Object[][] provideData2(ITestContext method,Method method1)
-	{
-		String[] s = method.getExcludedGroups();
-		System.out.println(s);
-		System.out.println(Arrays.toString(method.getIncludedGroups())+"--------------------");
-		return new ExcelReader().getTestData(method1.getName());
-	}
-	
-	List<String> a = new ArrayList<String>();
+
 }

@@ -37,17 +37,20 @@ import browsers.BrowserType;
 import browsers.ChromeBrowser;
 import browsers.FireFoxBrowser;
 import factory.FileReaderFactory;
+import fileReaders.ConfigFileReader;
 import helperPack.LoggerHelper;
 import helperPack.WaitHelper;
 
 public class TestBase {
 
+	public static final Logger log = LoggerHelper.getLogger(TestBase.class);
 	
 	public WebDriver driver;
 	private WaitHelper wait;
+	private ConfigFileReader prop = FileReaderFactory.getInstance().getConfigFileReader();
 	public static ExtentReports extent;
 	public static ExtentTest test;
-	public static final Logger log = LoggerHelper.getLogger(TestBase.class);
+	
 	
 	static
 	{
@@ -64,7 +67,7 @@ public class TestBase {
 	@BeforeMethod
 	public void beforeMethod(Method method)
 	{
-		setupBrowser(FileReaderFactory.getInstance().getConfigFileReader().getBrowser());
+		setupBrowser(prop.getBrowser());
 		test = extent.startTest(method.getName());
 		test.log(LogStatus.INFO, method.getName() +" has started its execution");
 	}
@@ -100,8 +103,8 @@ public class TestBase {
 		
 		driver = getBrowser(btype);
 		wait = new WaitHelper(driver);
-		wait.setImplicitWait(Integer.parseInt(FileReaderFactory.getInstance().getConfigFileReader().getImplicitWait()));
-		wait.setPageLoadTimeout(Integer.parseInt(FileReaderFactory.getInstance().getConfigFileReader().getPageLoadTimeout()));
+		wait.setImplicitWait(Integer.parseInt(prop.getImplicitWait()));
+		wait.setPageLoadTimeout(Integer.parseInt(prop.getPageLoadTimeout()));
 		
 	}
 	

@@ -7,21 +7,22 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import appFunctions.AppTestBase;
+import factory.FileReaderFactory;
+import fileReaders.ConfigFileReader;
 import fileReaders.ExcelReader;
 
 public class UIOperations{
 	
 	String testCaseName;
 	Map<String,String> testData;
-	Properties prop;
+	private ConfigFileReader prop = FileReaderFactory.getInstance().getConfigFileReader();;
 	String[][] testCaseData;
 	AppTestBase appBase;
-	public UIOperations (WebDriver driver, String testCaseName , Map<String,String> testData,Properties prop)
+	public UIOperations (WebDriver driver, String testCaseName , Map<String,String> testData)
 	{
 		appBase = new AppTestBase(driver);
 		this.testCaseName=testCaseName;
 		this.testData=testData;
-		this.prop=prop;
 		testCaseData = new ExcelReader().getTestCases(testCaseName);
 		
 	}

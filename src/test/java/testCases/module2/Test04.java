@@ -19,7 +19,7 @@ public class Test04 extends TestBase {
 	public void testcase4(Map<String,String> testData)
 	{
 		log.info("Execution of testCase: testcase4 has started");
-		UIOperations uiOperations = new UIOperations(driver,"testcase4",testData,prop);
+		UIOperations uiOperations = new UIOperations(driver,"testcase4",testData);
 		uiOperations.perform();
 	}
 	
