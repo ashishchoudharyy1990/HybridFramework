@@ -5,22 +5,9 @@
   <test name="Test1" preserve-order="true">
     <classes>
       <class name="testCases.module1.Test01"/>
-    </classes>
-  </test>
-  
-  
-  <test name="Test2">
-    <classes>
       <class name="testCases.module1.Test02"/>
-      <class name="testCases.module1.Test02"/>
-    </classes>
-  </test>  
-  
-  <test name="Test3">
-    <classes>
       <class name="testCases.module1.Test03"/>
     </classes>
   </test>
-
-   
+  
 </suite> 

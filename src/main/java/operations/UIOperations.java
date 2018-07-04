@@ -1,8 +1,6 @@
 package operations;
 
 import java.util.Map;
-import java.util.Properties;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -32,22 +30,22 @@ public class UIOperations{
 	{
 		for(int i=0;i<testCaseData.length;i++)
 		{
-			executeStep(testCaseData[i][0],testCaseData[i][1],testCaseData[i][2],testCaseData[i][3],prop);
+			executeStep(testCaseData[i][0],testCaseData[i][1],testCaseData[i][2],testCaseData[i][3]);
 		}
 
 	}	
 	
-	public void executeStep(String keyWord, String object, String type,String testDataKey,Properties prop)
+	public void executeStep(String keyWord, String object, String type,String testDataKey)
 	{
 		if (keyWord.equalsIgnoreCase("openapp"))
 		{
-			appBase.openApp(prop.getProperty("url"));
+			appBase.openApp(prop.getURL());
 		}
 		
 		else if (keyWord.equalsIgnoreCase("addname"))
 		{
 			try {
-				appBase.addName(getWebElement(prop,object,type), testData.get(testDataKey));
+				appBase.addName(getWebElement(object,type), testData.get(testDataKey));
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -57,7 +55,7 @@ public class UIOperations{
 		else if (keyWord.equalsIgnoreCase("addplace"))
 		{
 			try {
-				appBase.addPlace(getWebElement(prop,object,type), testData.get(testDataKey));
+				appBase.addPlace(getWebElement(object,type), testData.get(testDataKey));
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -67,7 +65,7 @@ public class UIOperations{
 		else if (keyWord.equalsIgnoreCase("addanimal"))
 		{
 			try {
-				appBase.addAnimal(getWebElement(prop,object,type), testData.get(testDataKey));
+				appBase.addAnimal(getWebElement(object,type), testData.get(testDataKey));
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -77,7 +75,7 @@ public class UIOperations{
 		else if (keyWord.equalsIgnoreCase("addthing"))
 		{
 			try {
-				appBase.addThing(getWebElement(prop,object,type), testData.get(testDataKey));
+				appBase.addThing(getWebElement(object,type), testData.get(testDataKey));
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -87,7 +85,7 @@ public class UIOperations{
 		else if (keyWord.equalsIgnoreCase("selectradiobutton"))
 		{
 			try {
-				appBase.selectRadioButton(getWebElement(prop,object,type));
+				appBase.selectRadioButton(getWebElement(object,type));
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -97,7 +95,7 @@ public class UIOperations{
 		else if (keyWord.equalsIgnoreCase("selectdropdown"))
 		{
 			try {
-				appBase.selectDropDown(getWebElement(prop,object,type),testData.get(testDataKey));
+				appBase.selectDropDown(getWebElement(object,type),testData.get(testDataKey));
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -108,49 +106,49 @@ public class UIOperations{
 	
 	
 	
-	private By getWebElement(Properties p,String objectName,String objectType) throws Exception
+	private By getWebElement(String objectName,String objectType) throws Exception
 	{
 			if(objectType.equalsIgnoreCase("XPATH"))
 			{
 				
-				return By.xpath(p.getProperty(objectName));
+				return By.xpath(getProperty(objectName));
 			}
 
 			else if(objectType.equalsIgnoreCase("CLASSNAME"))
 	        {
 				
-				return By.className(p.getProperty(objectName));
+				return By.className(getProperty(objectName));
 			}
 		
 			
 			else if(objectType.equalsIgnoreCase("NAME"))
 	        {
 				
-				return By.name(p.getProperty(objectName));
+				return By.name(getProperty(objectName));
 			}		
 
 			else if(objectType.equalsIgnoreCase("CSS"))
 			 {
 				
-				return By.cssSelector(p.getProperty(objectName));
+				return By.cssSelector(getProperty(objectName));
 			 }
 			 
 			
 			else if(objectType.equalsIgnoreCase("LINK"))
 			 {	
-				return By.linkText(p.getProperty(objectName));
+				return By.linkText(getProperty(objectName));
 			 }
 
 
 			else if(objectType.equalsIgnoreCase("PARTIALLINK"))
 			{	
-				return By.partialLinkText(p.getProperty(objectName));
+				return By.partialLinkText(getProperty(objectName));
 			}
 			
 	else if(objectType.equalsIgnoreCase("ID"))
 				
 	        {	
-				return By.id(p.getProperty(objectName));
+				return By.id(getProperty(objectName));
 			}
 			
 			else
@@ -158,5 +156,30 @@ public class UIOperations{
 				throw new Exception("Wrong object type");
 			}
 		}
+	
+	
+	
+	private String getProperty(String property)
+	{
+		if (property.equalsIgnoreCase("url"))
+			return prop.getURL();
+		else if (property.equalsIgnoreCase("name"))
+			return prop.getName();
+		else if (property.equalsIgnoreCase("place"))
+			return prop.getPlace();
+		else if (property.equalsIgnoreCase("animal"))
+			return prop.getAnimal();
+		else if (property.equalsIgnoreCase("Thing"))
+			return prop.getThing();
+		else if (property.equalsIgnoreCase("male"))
+			return prop.getMale();
+		else if (property.equalsIgnoreCase("female"))
+			return prop.getFemale();
+		else if (property.equalsIgnoreCase("other"))
+			return prop.getOthers();
+		else if (property.equalsIgnoreCase("select"))
+			return prop.getSelect();
+		else return null;
+	}
 
 }
