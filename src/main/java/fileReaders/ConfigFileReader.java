@@ -24,7 +24,7 @@ public class ConfigFileReader {
 			e.printStackTrace();
 		}
 		
-		Map<String,String> getenv = System.getenv();
+/*		Map<String,String> getenv = System.getenv();
 		Set<String> keySet = getenv.keySet();
 		for(String key : keySet)
 		{
@@ -34,7 +34,7 @@ public class ConfigFileReader {
 				break;
 			}
 		}
-		
+		*/
 	}
 	
 	
