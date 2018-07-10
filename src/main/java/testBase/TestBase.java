@@ -45,7 +45,7 @@ public class TestBase {
 
 	public static final Logger log = LoggerHelper.getLogger(TestBase.class);
 	
-	public WebDriver driver;
+	private WebDriver driver;
 	private WaitHelper wait;
 	private ConfigFileReader prop = FileReaderFactory.getInstance().getConfigFileReader();
 	public static ExtentReports extent;
@@ -73,6 +73,11 @@ public class TestBase {
 	}
 	
 
+	public WebDriver getDriver ()
+	{
+        return driver;
+    }
+	
 	@AfterMethod
 	public void afterMethod(ITestResult result)
 	{

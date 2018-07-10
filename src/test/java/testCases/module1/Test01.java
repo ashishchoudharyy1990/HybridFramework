@@ -4,8 +4,6 @@ import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.testng.annotations.Test;
-
-import dataProviders.DataProviderClass;
 import helperPack.LoggerHelper;
 import operations.UIOperations;
 import testBase.TestBase;
@@ -19,7 +17,7 @@ public class Test01 extends TestBase {
 	public void testcase1(Map<String,String> testData)
 	{
 		log.info("Execution of testCase: testcase1 has started");
-		UIOperations uiOperations = new UIOperations(driver,"testcase1",testData);
+		UIOperations uiOperations = new UIOperations(getDriver(),"testcase1",testData);
 		uiOperations.perform();
 	}
 	
