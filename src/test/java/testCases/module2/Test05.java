@@ -25,7 +25,7 @@ public class Test05 extends TestBase {
 	public void testcase5(Map<String,String> testData)
 	{
 		log.info("Execution of testCase: testcase5 has started");
-		UIOperations uiOperations = new UIOperations(driver,"testcase5",testData);
+		UIOperations uiOperations = new UIOperations(getDriver(),"testcase5",testData);
 		uiOperations.perform();
 			
 	}
